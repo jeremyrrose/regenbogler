@@ -14,8 +14,10 @@ class Regenbogler {
 
         this.arr = arr
         this.orig = [...arr]
-        this.sorted = sort? [...arr].sort() : arr
-        this.colors = {}
+        this.sorted = sort? arr.every(x => parseInt(x)) ? [...arr].sort((a,b)=>a-b) : [...arr].sort() : arr
+        this.colors = {
+            '?:': [vals[vals.length-1],vals[vals.length-1],vals[vals.length-1],vals[vals.length-1]]
+        }
         arr.forEach((item, i) => {
             this.colors[item] = this.colors[item] ? this.colors[item] : rgbs[i < rgbs.length ? rgbs.length - 1 - i : i % rgbs.length]
         })
