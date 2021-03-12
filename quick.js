@@ -1,7 +1,6 @@
 const Regenbogler = require('./index.js')
 const message =  
-"\033[2J\nin 25 werds or less:" +
-"\nwhy is this so slo?" +
+"\033[2J\nQ U I C K  S O R T:" +
 "\n\n\n"
 const timeout = 100
 

@@ -1,8 +1,9 @@
 const Regenbogler = require('./index.js')
 const message =  
-"\033[2J\nin 25 werds or less:" +
-"\nwhy is this so slo?" +
+"\033[2J\nM E R G E  S O R T:" +
 "\n\n\n"
+
+const timeout = 200
 
 const numsArr = [ 1,1,1, 6, 1,1,1,1834, 2, 4, 7, 12, 1, 5, 3, 66, 12, 7, 3 ]
 const alphaArr = "abcdefghijklmnopqrstuvwxyz".split('')
@@ -26,7 +27,7 @@ const mergeSort = async (arr, bow) => {
     const right = arr.slice(center)
 
     ops++
-    await new Promise(resolve => setTimeout(resolve, 10))
+    await new Promise(resolve => setTimeout(resolve, timeout))
     console.log(bow.print([...left, "||", ...right], false, `\n\ntotal steps: ${ops}\nsplits ${splits}; merges ${merges}`))
     return await merge(await mergeSort(left, bow), await mergeSort(right, bow), bow)
 
@@ -42,7 +43,7 @@ const merge = async (left, right, bow) => {
             result.push(right.shift())
         }
         ops++
-        await new Promise(resolve => setTimeout(resolve, 10))
+        await new Promise(resolve => setTimeout(resolve, timeout))
         console.log(bow.print([...result, "?:", ...left, "||", ...right], false, `\n\ntotal steps: ${ops}\nsplits ${splits}; merges ${merges}`))
     }
     return [...result, ...left, ...right]

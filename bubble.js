@@ -1,7 +1,6 @@
 const Regenbogler = require('./index.js')
 const message =  
-"\033[2J\nin 25 werds or less:" +
-"\nwhy is this so slo?" +
+"\033[2J\nB U B B L E  S O R T:" +
 "\n\n\n"
 
 
