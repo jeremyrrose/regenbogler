@@ -1,5 +1,5 @@
 class Regenbogler {
-    constructor(arr, sort=true, message="", vals=[96,160,192,255]) {
+    constructor(arr, sort=true, message="", vals=[96,160,192,255], specialChars=["?:","||","$"]) {
 
         const rgbs = [ ]
         for (let val1 of vals) {
@@ -16,8 +16,8 @@ class Regenbogler {
         this.orig = [...arr]
         this.sorted = sort? arr.every(x => parseInt(x)) ? [...arr].sort((a,b)=>a-b) : [...arr].sort() : arr
         this.colors = {
-            '?:': [vals[vals.length-1],vals[vals.length-1],vals[vals.length-1],vals[vals.length-1]]
         }
+        specialChars.forEach(item => this.colors[item] = [vals[vals.length-1], vals[vals.length-1], vals[vals.length-1]])
         arr.forEach((item, i) => {
             this.colors[item] = this.colors[item] ? this.colors[item] : rgbs[i < rgbs.length ? rgbs.length - 1 - i : i % rgbs.length]
         })
