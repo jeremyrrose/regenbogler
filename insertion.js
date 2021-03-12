@@ -21,15 +21,15 @@ const insertion = async (arr) => {
         let j = i - 1
         while( arr[j] > cur && j >= 0) {
             await new Promise(resolve => setTimeout(resolve, 200))
-            // console.log(bow.print([...arr, '?:', cur], false, `\n\ntotal steps: ${ops}\nouter ${i+1}; inner ${j+1}`, j))
-            console.log(bow.string([...arr, "?:", cur], j))
+            console.log(bow.print([...arr, '?:', cur], false, `\n\ntotal steps: ${ops}\nouter ${i+1}; inner ${j+1}`, j))
+            // console.log(bow.string([...arr, "?:", cur], j))
             arr[j+1] = arr[j]
             j--
             ops++
         }
         arr[j+1] = cur
         ops++
-        // console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}\nouter ${i+1}; inner ${j+1}`, j))
+        console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}\nouter ${i+1}; inner ${j+1}`, j))
     }
     return arr
 }
