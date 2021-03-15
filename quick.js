@@ -5,7 +5,6 @@ const message =
 "\n\n\n"
 
 let splits = 0
-let merges = 0
 let comparisons = 0
 
 
@@ -53,25 +52,32 @@ const quick = async (arr, bow) => {
         } else {
             console.log(bow.string([...left, "||", pivot, "||", ...right, "?:", ...arr]))
         } 
+        // end output
     }
 
+    // for output
     await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
         console.log(bow.print([...left, "||", pivot, "||", ...right], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
     } else {
         console.log(bow.string([...left, "||", pivot, "||", ...right]))
     }
-    
+    // end output
+
     const result = [await quick(left, bow), await quick(right, bow)]
+
+    // for output
+    await new Promise(resolve => setTimeout(resolve, timeout))
     if (!wave) {
         console.log(bow.print([...result[0],"||",pivot,"||",...result[1]], false, `\n\ntotal steps: ${comparisons}\nsplits ${splits}`))
     } else {
         console.log(bow.string([...result[0],"||",pivot,"||",...result[1]]))
     }
-    
+    // end output
+
     return [...result[0], pivot, ...result[1]]
 
 }
 
 const bow = new Regenbogler(alphaArr.sort(()=>Math.random() - .5), true, message)
-console.log(quick(bow.arr, bow))
+quick(bow.arr, bow)
