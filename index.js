@@ -1,6 +1,10 @@
 class Regenbogler {
     constructor(arr, sort=true, message="", vals=[96,160,192,255], specialChars=["?:","||","$"]) {
 
+        if (!Array.isArray(arr)) {
+            return false
+        }
+
         const rgbs = [ ]
         for (let val1 of vals) {
             for (let val2 of vals) {
