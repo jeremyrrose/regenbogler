@@ -9,7 +9,7 @@ specialChars [["?:","||","$"]] : Characters to include as keys in this.colors re
 
 class Regenbogler {
 
-    constructor(arr, sort=true, message="", vals=[96,160,192,255], specialChars=["?:","||","$"]) {
+    constructor(arr, sort=true, message="", vals=[96,160,192,255], specialChars=["?:","||","$","<<"]) {
 
         if (!Array.isArray(arr) || typeof sort != 'boolean' || !Array.isArray(vals) || !Array.isArray(specialChars)) {
             console.log(docString)
