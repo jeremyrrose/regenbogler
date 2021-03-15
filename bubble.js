@@ -1,12 +1,9 @@
 const Regenbogler = require('./index.js')
+const {timeout, wave, numsArr, alphaArr, sentenceArr} = require('./config.js')
+const flipCheck = process.argv.includes("optimize")
 const message =  
 "\033[2J\nB U B B L E  S O R T:" +
 "\n\n\n"
-
-
-const numsArr = [ 1,1,1, 6, 1,1,1,1834, 2, 4, 7, 12, 1, 5, 3, 66, 12, 7, 3 ]
-const alphaArr = "abcdefghijklmnopqrstuvwxyz".split('')
-const sentenceArr = "the quick brown fox jumps over the lazy dog".split(" ")
 
 const bubbler = async arr => {
 
@@ -18,13 +15,16 @@ const bubbler = async arr => {
 
         let flip = false
 
-        for (let j=0; j < arr.length - 1; j++) {
+        for (let j=0; j < arr.length - 1 - i; j++) {
             
-            await new Promise(resolve => setTimeout(resolve, 200))
-            console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}\npass ${i+1}; step ${j+1}`, j))
-            // console.log(bow.print(arr, false, false, j))
-            // console.log(bow.string(arr, j))
-            // console.log(bow.string(arr, j), "\n" + bow.base(), "\n" + bow.target())
+            // for output
+            await new Promise(resolve => setTimeout(resolve, timeout))
+            if (!wave) { 
+                console.log(bow.print(arr, false, `\n\ntotal steps: ${ops}\npass ${i+1}; step ${j+1}`, j))
+            } else {
+                console.log(bow.string(arr, j))
+            }
+            // end output
 
             if (arr[j] > arr[j+1]) {
                 [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
@@ -34,9 +34,9 @@ const bubbler = async arr => {
             ops++
         }
 
-        // if (!flip) {
-        //     return arr
-        // }
+        if (flipCheck &&!flip) {
+            return arr
+        }
     }
 
     return arr
