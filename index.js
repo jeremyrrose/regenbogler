@@ -4,7 +4,7 @@ Optional arguments (in order, with defaults):
 sort [true] : Use default sorts to populate this.sorted based on original array.
 message ["] : Add a default message for .print method.
 vals [[96,160,192,255]] : Provide RGB values between 0 and 255 for building the array of colors.
-specialChars [["?:","||","$"]] : Characters to include as keys in this.colors regardless of presence in original array.
+specialChars [["?:","||","$","<<"]] : Characters to include as keys in this.colors regardless of presence in original array.
 `
 
 class Regenbogler {
