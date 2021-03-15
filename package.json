@@ -1,0 +1,19 @@
+{
+  "name": "regenbogler",
+  "version": "1.0.0",
+  "description": "A simple class that applies colors consistently to values in a base array and outputs colorized strings based on different arrangements of the same values.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremyrrose/regenbogler.git"
+  },
+  "author": "Jeremy Rose",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremyrrose/regenbogler/issues"
+  },
+  "homepage": "https://github.com/jeremyrrose/regenbogler#readme"
+}
