@@ -15,7 +15,7 @@ class Regenbogler {
             throw "Invalid arguments provided to constructor."
         }
 
-        const asniCodes = 
+        const ansiCodes = 
         [ 46,47,48,49,50,51,76,77,78,79,80,81,190,191,192,193,194,195,208,209,210,211,212,213,196,197,198,199,200,201,202,203,204,205,206,207 ]
         .sort((a,c)=>Math.random() - .5)
 
@@ -26,7 +26,7 @@ class Regenbogler {
         }
         specialChars.forEach(item => this.colors[item] = 255)
         arr.forEach((item, i) => {
-            this.colors[item] = this.colors[item] ? this.colors[item] : asniCodes[i < asniCodes.length ? asniCodes.length - 1 - i : i % asniCodes.length]
+            this.colors[item] = this.colors[item] ? this.colors[item] : ansiCodes[i < ansiCodes.length ? ansiCodes.length - 1 - i : i % ansiCodes.length]
         })
         this.message = message
     }
