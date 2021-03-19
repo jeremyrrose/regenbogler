@@ -3,29 +3,21 @@ The first positional argument to the constructor must be an array.
 Optional arguments (in order, with defaults):
 sort [true] : Use default sorts to populate this.sorted based on original array.
 message ["] : Add a default message for .print method.
-vals [[96,160,192,255]] : Provide RGB values between 0 and 255 for building the array of colors.
 specialChars [["?:","||","$","<<"]] : Characters to include as keys in this.colors regardless of presence in original array.
 `
 
 class Regenbogler {
 
-    constructor(arr, sort=true, message="", vals=[96,160,192,255], specialChars=["?:","||","$","<<"]) {
+    constructor(arr, sort=true, message="", specialChars=["?:","||","$","<<"]) {
 
         if (!Array.isArray(arr) || typeof sort != 'boolean' || !Array.isArray(vals) || !Array.isArray(specialChars)) {
             console.log(docString)
             throw "Invalid arguments provided to constructor."
         }
 
-        const rgbs = [ ]
-        for (let val1 of vals) {
-            for (let val2 of vals) {
-                for (let val3 of vals) {
-                    if (val1 && val2 || val1 && val3 || val2 && val3){
-                        rgbs.push([val1,val2,val3])
-                    }
-                }
-            }
-        }
+        const asniCodes = 
+        [ 46,47,48,49,50,51,76,77,78,79,80,81,190,191,192,193,194,195,208,209,210,211,212,213,196,197,198,199,200,201,202,203,204,205,206,207 ]
+        .sort((a,c)=>Math.random() - .5)
 
         this.arr = arr
         this.orig = [...arr]
@@ -34,7 +26,7 @@ class Regenbogler {
         }
         specialChars.forEach(item => this.colors[item] = [vals[vals.length-1], vals[vals.length-1], vals[vals.length-1]])
         arr.forEach((item, i) => {
-            this.colors[item] = this.colors[item] ? this.colors[item] : rgbs[i < rgbs.length ? rgbs.length - 1 - i : i % rgbs.length]
+            this.colors[item] = this.colors[item] ? this.colors[item] : asniCodes[i < asniCodes.length ? asniCodes.length - 1 - i : i % asniCodes.length]
         })
         this.message = message
     }
@@ -53,7 +45,7 @@ class Regenbogler {
         arr.forEach((item, i) => {
             // bold and underline
             str += i == index ? "\x1b[1m\x1b[4m" : ""
-            str += ((r,g,b)=>`\x1b[38;2;${r};${g};${b}m`)(...this.colors[item])
+            str += ( colorCode =>`\x1b[38;5;${colorCode}m`)(...this.colors[item])
             str += item       
             // remove bold and underline      
             str += i == index ? "\x1b[22m\x1b[24m " : " "
