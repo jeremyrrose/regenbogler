@@ -4,20 +4,22 @@ Optional arguments (in order, with defaults):
 sort [true] : Use default sorts to populate this.sorted based on original array.
 message ["] : Add a default message for .print method.
 specialChars [["?:","||","$","<<"]] : Characters to include as keys in this.colors regardless of presence in original array.
+palette [null] : Provide a color palette using 8-bit ANSI codes. If not provided, defaults to pastel.
 `
 
 class Regenbogler {
 
-    constructor(arr, sort=true, message="", specialChars=["?:","||","$","<<"]) {
+    constructor(arr, sort=true, message="", specialChars=["?:","||","$","<<"], palette=null) {
 
         if (!Array.isArray(arr) || typeof sort != 'boolean' || !Array.isArray(specialChars)) {
             console.log(docString)
             throw "Invalid arguments provided to constructor."
         }
 
-        const ansiCodes = 
-        [ 46,47,48,49,50,51,76,77,78,79,80,81,190,191,192,193,194,195,208,209,210,211,212,213,196,197,198,199,200,201,202,203,204,205,206,207 ]
-        .sort((a,c)=>Math.random() - .5)
+        const ansiCodes = (
+            palette ||
+            [ 46,47,48,49,50,51,76,77,78,79,80,81,190,191,192,193,194,195,208,209,210,211,212,213,196,197,198,199,200,201,202,203,204,205,206,207 ]
+        ).sort((a,c)=>Math.random() - .5)
 
         this.arr = arr
         this.orig = [...arr]
