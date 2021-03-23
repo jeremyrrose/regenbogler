@@ -13,7 +13,7 @@ class Regenbogler {
 
         if (!Array.isArray(arr) || typeof sort != 'boolean' || !Array.isArray(specialChars)) {
             console.log(docString)
-            throw "Invalid arguments provided to constructor."
+            throw new Error("Invalid arguments provided to constructor.")
         }
 
         const ansiCodes = (
