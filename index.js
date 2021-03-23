@@ -4,7 +4,7 @@ Optional arguments (in order, with defaults):
 sort [true] : Use default sorts to populate this.sorted based on original array.
 message ["] : Add a default message for .print method.
 specialChars [["?:","||","$","<<"]] : Characters to include as keys in this.colors regardless of presence in original array.
-palette [null] : Provide a color palette using 8-bit ANSI codes. If not provided, defaults to pastel.
+palette [null] : Provide a color palette using 8-bit ANSI codes as integers in an array. If not provided, defaults to pastel.
 `
 
 class Regenbogler {
